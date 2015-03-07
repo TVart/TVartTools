@@ -1,0 +1,7 @@
+!.gitignore
+.~lock.*
+*.lock
+.idea
+memory
+vendor
+
