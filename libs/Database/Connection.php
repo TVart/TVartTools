@@ -16,7 +16,7 @@ class Connection extends  \Illuminate\Database\Capsule\Manager {
         if(is_null(self::$instance)){
             self::$instance = new Connection();
             self::$instance->addConnection(
-                Congig::init()
+                Config::init()
             );
             self::$instance->setAsGlobal();
             self::$instance->bootEloquent();
