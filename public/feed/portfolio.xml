@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="ISO8859-1" ?>
+<portfolio>
+  <stock exchange="nyse">
+    <name>zacx corp</name>
+    <symbol>ZCXM</symbol>
+    <price>28.875</price>
+  </stock>
+  <stock exchange="nasdaq">
+    <name>zaffymat inc</name>
+    <symbol>ZFFX</symbol>
+    <price>92.250</price>
+  </stock>
+</portfolio>
