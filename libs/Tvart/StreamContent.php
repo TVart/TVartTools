@@ -34,6 +34,7 @@ class StreamContent
         'accept_language:fr,fr-fr;q=0.8,en-us;q=0.5,en;q=0.3',
         'connection: close'
     ];
+
     public static function getContext(){
         if(is_null(self::$_instance)){
             self::$_instance = new self;
@@ -41,9 +42,11 @@ class StreamContent
         }
         return self::$_instance;
     }
+
     public function checkContext(){
         return $this->context;
     }
+
     public function getContent($url, $mc = false) {
         $content = "";
         $mc_key = md5($url);
@@ -59,19 +62,23 @@ class StreamContent
         }
         return str_replace('&nbsp;', ' ', $content);
     }
+
     public function initMemcache(){
         if(!($this->memcache instanceof \Memcached)){
             $this->memcache = new \Memcached();
             $this->memcache->addServer("localhost",11211,100);
         }
     }
+
     public function getMemcache($mc_key){
         return $this->memcache->get($mc_key);
     }
+
     public function setMemcache($mc_key,$content){
         $this->memcache->set($mc_key,$content);
         return $this;
     }
+
     public function setWrapper($wrapper){
         $context = $this->context[$this->wrapper];
         $this->wrapper = $wrapper;
@@ -80,21 +87,25 @@ class StreamContent
         ];
         return $this;
     }
+
     public function setProtocolVersion($protocol_version){
         $this->protocol_version = $protocol_version;
         $this->context[$this->wrapper]["protocol_version"] = $protocol_version;
         return $this;
     }
+
     public function setQuery($content){
         $this->content = $content;
         $this->context[$this->wrapper]["content"] = http_build_query($this->content);
         return $this;
     }
+
     public function setAuth($username, $password){
         $this->header[] = "Authorization: Basic ".base64_encode("$username:$password");
         $this->context[$this->wrapper]["header"] = $this->header;
         return $this;
     }
+
     public function setHeaders(array $headers){
         if(!empty($headers)){
             foreach($headers as $header){
@@ -104,6 +115,7 @@ class StreamContent
         $this->context[$this->wrapper]["header"] = $this->header;
         return $this;
     }
+
     public function setProxy($host, $port){
         $this->proxy = sprintf("%s:%s",$host,$port);
         $this->request_fulluri = true;
@@ -111,16 +123,19 @@ class StreamContent
         $this->context[$this->wrapper]["request_fulluri"] = $this->request_fulluri;
         return $this;
     }
+
     public function setMaxRedirects($max_redirects){
         $this->max_redirects = $max_redirects;
         $this->context[$this->wrapper]["max_redirects"] = $max_redirects;
         return $this;
     }
+
     public function setTimeout($timeout){
         $this->timeout = $timeout;
         $this->context[$this->wrapper]["timeout"] = $timeout;
         return $this;
     }
+
     public function setMethod($method){
         if(in_array($method,$this->allowed_methods)){
             $this->method = $method;
@@ -128,16 +143,19 @@ class StreamContent
         }
         return $this;
     }
+
     public function setUserAgent($user_agent){
         $this->user_agent = $user_agent;
         $this->context[$this->wrapper]["user_agent"] = $user_agent;
         return $this;
     }
+
     public function setIgnoreErrors($bool){
         $this->ignore_errors = $bool;
         $this->context[$this->wrapper]["ignore_errors"] = $bool;
         return $this;
     }
+
     public function setHeader($header){
         $this->context[$this->wrapper]["header"] = $this->header;
         $this->header = $header;

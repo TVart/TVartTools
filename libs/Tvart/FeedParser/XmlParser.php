@@ -47,7 +47,7 @@ class XmlParser
     /**
      * @param \Closure $callback
      */
-    public function parseFile(\Closure $callback){
+    private function parseFile(\Closure $callback){
         while($this->xmlr->localName == $this->node) {
             $callback(new \SimpleXMLElement($this->xmlr->readOuterXml()));
             if($this->debug){break;}

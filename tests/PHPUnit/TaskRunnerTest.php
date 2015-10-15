@@ -21,7 +21,7 @@ class TaskRunnerTest extends PHPUnit_Framework_TestCase{
              */
                 $this->once()
             )
-             ->method("execute")
+            ->method("execute")
             ->with($this->equalTo(["users"]));
 
         $mock2 = $this->getMock("libs\Interfaces\TaskInterface", array("execute"));

@@ -17,7 +17,7 @@ class AssertionTest extends PHPUnit_Framework_TestCase{
         $arr[] = 2;
         $arr[] = "users";
         $this->assertContains("users",$arr);
-        $this->assertNotContains("Limite",$arr);
+        $this->assertNotContains("listings",$arr);
         array_pop($arr);
         $this->assertEquals([1,2],$arr);
     }
