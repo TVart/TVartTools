@@ -6,7 +6,7 @@
  * Time: 11:38
  */
 
-namespace libs\Migration;
+namespace tvart\Migration;
 
 class Seed{
     public function feedTables(){

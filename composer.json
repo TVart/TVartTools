@@ -1,14 +1,25 @@
 {
+    "name": "tvart/libs",
+    "description": "usefull libs to parse files in xml or csv format, retreive them or send using http or ftp protocols",
+    "type": "vendor",
     "require": {
+        "monolog/monolog": "^1.19",
         "phpunit/phpunit": "4.1",
-	    "illuminate/database": "*",
-        "pimple/pimple": "~3.0"
+        "illuminate/database": "*"
     },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "tvart",
+            "email": "vartan.torossian@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
     "autoload": {
-        "psr-4": {
-	        "libs\\": "libs/"
-	    },
-
+        "psr-0": {
+            "tvart":        "libs/",
+            "tvart\\Tests": "test/"
+        },
         "classmap" : [
             "libs/Models"
         ]

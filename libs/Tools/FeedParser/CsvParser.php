@@ -1,6 +1,6 @@
 <?php
 
-namespace libs\Tvart\FeedParser;
+namespace tvart\Tools\FeedParser;
 class CsvParser
     {
     /**

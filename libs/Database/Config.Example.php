@@ -5,7 +5,7 @@
  * Date: 06/03/15
  * Time: 13:32
  */
-namespace libs\Database;
+namespace tvart\Database;
 
 class Congig{
 

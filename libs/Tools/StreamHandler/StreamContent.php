@@ -1,5 +1,5 @@
 <?php
-namespace libs\Tvart;
+namespace tvart\Tools\StreamHandler;
 class StreamContent
 {
     private function __construct() {
@@ -13,9 +13,11 @@ class StreamContent
             "content" => http_build_query($this->content)
         ];
     }
+
     protected static $_instance = null;
+
     /**
-     * @var \Memcached $cache
+     * @var \Memcache $cache
      */
     protected $memcache = null;
     protected $context = [];
@@ -35,10 +37,10 @@ class StreamContent
         'connection: close'
     ];
 
+
     public static function getContext(){
         if(is_null(self::$_instance)){
-            self::$_instance = new self;
-            //self::$_instance = new StreamContent();
+            self::$_instance = new StreamContent();
         }
         return self::$_instance;
     }
@@ -48,26 +50,22 @@ class StreamContent
     }
 
     public function getContent($url, $mc = false) {
-        $content = "";
-        $mc_key = md5($url);
-
-        if(!empty($mc)) {
+        if($mc) {
+            $mc_key = md5($url);
             $content = $this->getMemcache($mc_key);
-        }
-        if(empty($content)){
+            if(empty($content)){
+                $content = file_get_contents($url, false, stream_context_create($this->context));
+                $this->setMemcache($mc_key,$content);
+            }
+        }else{
             $content = file_get_contents($url, false, stream_context_create($this->context));
         }
-        if(!empty($mc) && !empty($content)) {
-            $this->setMemcache($mc_key,$content);
-        }
+
         return str_replace('&nbsp;', ' ', $content);
     }
 
-    public function initMemcache(){
-        if(!($this->memcache instanceof \Memcached)){
-            $this->memcache = new \Memcached();
-            $this->memcache->addServer("localhost",11211,100);
-        }
+    public function initMemcache(\Memcache $cache){
+        $this->memcache = $cache;
     }
 
     public function getMemcache($mc_key){
@@ -124,11 +122,13 @@ class StreamContent
         return $this;
     }
 
+
     public function setMaxRedirects($max_redirects){
         $this->max_redirects = $max_redirects;
         $this->context[$this->wrapper]["max_redirects"] = $max_redirects;
         return $this;
     }
+
 
     public function setTimeout($timeout){
         $this->timeout = $timeout;

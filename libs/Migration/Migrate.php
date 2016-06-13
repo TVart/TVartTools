@@ -1,6 +1,6 @@
 <?php
 
-namespace libs\Migration;
+namespace tvart\Migration;
 
 use Illuminate\Database\Schema\Blueprint;
 use libs\Database\Connection;

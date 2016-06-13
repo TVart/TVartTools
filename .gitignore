@@ -1,7 +1,7 @@
 .~lock.*
 *.lock
-.idea
+.idea/
 memory
-vendor
+vendor/
 libs/Database/Config.php
 

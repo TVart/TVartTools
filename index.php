@@ -1,7 +1,7 @@
 <?php
 ini_set("display_errors", "1");
-require 'vendor/autoload.php';
 error_reporting(E_ALL);
+require __DIR__ . '/vendor/autoload.php';
 //use \libs\Database\Connection as Connection;
 /*use \libs\Migration\Migrate;
 use \libs\Migration\Seed;
@@ -11,8 +11,8 @@ $migrater->createTables();
 $seed = new Seed();
 $seed->feedTables();*/
 
-use \libs\Tvart\StreamContent as Sc;
-use \libs\Tvart\FeedParser\XmlParser;
+use tvart\Tools\StreamContent as Sc;
+use tvart\Tools\FeedParser\XmlParser;
 
 $sc = Sc::getContext();
 $sc->initMemcache();

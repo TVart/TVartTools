@@ -6,7 +6,7 @@
  * Time: 22:30
  */
 
-namespace libs\Database;
+namespace tvart\Database;
 
 class Connection extends  \Illuminate\Database\Capsule\Manager {
 
