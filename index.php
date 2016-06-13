@@ -2,7 +2,10 @@
 ini_set("display_errors", "1");
 error_reporting(E_ALL);
 require __DIR__ . '/vendor/autoload.php';
-//use \libs\Database\Connection as Connection;
+use tvart\Database\Connection;
+Connection::getInstance();
+
+exit;
 /*use \libs\Migration\Migrate;
 use \libs\Migration\Seed;
 Connection::getInstance();

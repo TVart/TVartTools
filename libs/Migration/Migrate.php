@@ -3,11 +3,10 @@
 namespace tvart\Migration;
 
 use Illuminate\Database\Schema\Blueprint;
-use libs\Database\Connection;
+use tvart\Database\Connection;
 
 class Migrate {
-    public function createTables(){
-
+    /*public function createTables(){
         $this->delete("option_utilisateur_portail");
         $this->delete("option_portail");
         $this->delete("login_portail");
@@ -97,5 +96,5 @@ class Migrate {
             $table->integer("id_option_portail")->unsigned();
             $table->foreign("id_option_portail")->references("id")->on("option_portail");
         });
-    }
+    }*/
 }
