@@ -6,7 +6,7 @@
  * Time: 11:38
  */
 
-namespace tvart\Migration;
+namespace Tvart\Framework\Migration;
 
 class Seed{
     public function feedTables(){

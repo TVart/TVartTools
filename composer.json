@@ -1,11 +1,10 @@
 {
-    "name": "tvart/libs",
-    "description": "usefull libs to parse files in xml or csv format, retreive them or send using http or ftp protocols",
+    "name": "tvart/framework",
+    "description": "Lite framework in php / eloquent to manage accounts (possibility to be grouped in a parent group), and their listings / articles ",
     "type": "vendor",
     "require": {
-        "monolog/monolog": "^1.19",
-        "phpunit/phpunit": "4.1",
-        "illuminate/database": "*"
+        "illuminate/database": "*",
+        "tvart/libs": "*"
     },
     "license": "MIT",
     "authors": [
@@ -17,8 +16,8 @@
     "minimum-stability": "dev",
     "autoload": {
         "psr-0": {
-            "tvart":        "libs/",
-            "tvart\\Tests": "test/"
+            "Tvart\\Framework":        "libs/",
+            "Tvart\\Framework\\Tests": "test/"
         },
         "classmap" : [
             "libs/Models"
